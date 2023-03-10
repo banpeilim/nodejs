@@ -21,21 +21,12 @@ router.get("/lighton", (req, res) => {
 
   // Function to turn the light on
   function turnOn() {
-    $.ajax({
-      type: "PUT",
-      url:
-        "https://" +
-        bridgeIp +
-        "/api/" +
-        apiKey +
-        "/lights/" +
-        lightId +
-        "/state",
-      data: '{"on":true}',
-      success: function () {
-        console.log("Light turned on.");
-      },
-    });
+    fetch(
+      "https://" + bridgeIp + "/api/" + apiKey + "/lights/" + lightId + "/state"
+    )
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
   }
 
   turnOn();
