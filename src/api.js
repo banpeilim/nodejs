@@ -24,7 +24,7 @@ router.get("/lighton", (req, res) => {
     $.ajax({
       type: "PUT",
       url:
-        "http://" +
+        "https://" +
         bridgeIp +
         "/api/" +
         apiKey +
